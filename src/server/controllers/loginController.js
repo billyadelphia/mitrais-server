@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User';
+import User from '../models/user';
 const bcrypt = require('bcrypt');
 const Redis = require("ioredis");
 const redis = new Redis({

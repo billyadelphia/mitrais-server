@@ -7,7 +7,7 @@ exports.default = void 0;
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var _User = _interopRequireDefault(require("../models/User"));
+var _user = _interopRequireDefault(require("../models/user"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27,7 +27,7 @@ var _default = {
     let password = req.body.password;
 
     if (email && password) {
-      let user = await _User.default.findOne({
+      let user = await _user.default.findOne({
         where: {
           email: email
         }
@@ -111,7 +111,7 @@ var _default = {
             message: 'Token is not valid'
           });
         } else {
-          let user = await _User.default.findOne({
+          let user = await _user.default.findOne({
             where: {
               "email": decoded.email
             }
