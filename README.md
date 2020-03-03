@@ -4,6 +4,7 @@ Requirement `Node JS version >=10 (recomended version >= 12) with NPM & Mysql ve
 cd project_folder
 npm install
 cp .env.example .env //Please configure database configuration the .env file
+npm install -g npx
 npx sequelize-cli db:migrate
 ```
 
