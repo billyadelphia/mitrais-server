@@ -1,5 +1,5 @@
 # How to install
-Requirement `Node JS version >=10 with NPM`
+Requirement `Node JS version >=10 (recomended version >= 12) with NPM & Mysql version >= 5.6 (recomended version >= 8)`
 ```
 cd project_folder
 npm install
