@@ -28,14 +28,16 @@ User.init({
       notEmpty: true,
 
       async isUniqueEmail(value) {
-        let user = await User.findOne({
-          where: {
-            email: value
-          }
-        });
+        if (value) {
+          let user = await User.findOne({
+            where: {
+              email: value
+            }
+          });
 
-        if (user) {
-          throw new Error("Email is Already Taken");
+          if (user) {
+            throw new Error("Email is Already Taken");
+          }
         }
       }
 
@@ -61,15 +63,17 @@ User.init({
       },
 
       async isUniqueMobile(value) {
-        let mobile_number = `62${value.substring(1, value.length)}`;
-        let user = await User.findOne({
-          where: {
-            mobile_number: mobile_number
-          }
-        });
+        if (value) {
+          let mobile_number = `62${value.substring(1, value.length)}`;
+          let user = await User.findOne({
+            where: {
+              mobile_number: mobile_number
+            }
+          });
 
-        if (user) {
-          throw new Error("Mobile Number is Already Taken");
+          if (user) {
+            throw new Error("Mobile Number is Already Taken");
+          }
         }
       }
 
