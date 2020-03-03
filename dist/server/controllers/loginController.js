@@ -120,7 +120,6 @@ var _default = {
             plain: true
           });
           delete user.password;
-          console.log(user);
           res.json({
             data: user
           });
