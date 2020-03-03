@@ -6,8 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "babel src --out-dir dist --ignore 'node_modules/*','dist/*','test/*','ext_lib/*' ",
-        "start": "npx pm2 start ecosystem.config.js",
-        "restart": "npx pm2 restart ecosystem.config.js",
+        "start": "npx pm2 start ecosystem.config.js --update-env",
+        "restart": "npx pm2 restart ecosystem.config.js  --update-env",
         "stop": "npx pm2 restart ecosystem.config.js",
         "logs": "npx pm2 logs"
     },
