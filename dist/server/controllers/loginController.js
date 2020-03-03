@@ -92,6 +92,47 @@ var _default = {
         message: 'Auth token is not supplied'
       });
     }
+  },
+
+  async getUser(req, res) {
+    let token = req.headers['x-access-token'] || req.headers['authorization']; // Express headers are auto converted to lowercase
+
+    if (token.startsWith('Bearer ')) {
+      // Remove Bearer from string
+      token = token.slice(7, token.length);
+    }
+
+    if (token) {
+      _jsonwebtoken.default.verify(token, JWT_SECRET, async (err, decoded) => {
+        if (err) {
+          res.status(500);
+          res.json({
+            isAuthenticated: false,
+            message: 'Token is not valid'
+          });
+        } else {
+          let user = await _User.default.findOne({
+            where: {
+              "email": decoded.email
+            }
+          });
+          user = user.get({
+            plain: true
+          });
+          delete user.password;
+          console.log(user);
+          res.json({
+            data: user
+          });
+        }
+      });
+    } else {
+      res.status(500);
+      res.json({
+        isAuthenticated: false,
+        message: 'Auth token is not supplied'
+      });
+    }
   }
 
 };

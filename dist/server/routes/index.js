@@ -17,5 +17,6 @@ let router = (0, _express.Router)();
 router.post("/auth/checkLogin", _loginController.default.checkToken);
 router.post("/auth/login", _loginController.default.index);
 router.post("/auth/register", _registerController.default.index);
+router.post("/auth/data", _loginController.default.getUser);
 var _default = router;
 exports.default = _default;
